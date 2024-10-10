@@ -21,22 +21,37 @@ namespace mc_worldname_viewer
         // Enterボタンをクリック
         private void dirNameBtn_Click(object sender, EventArgs e)
         {
+            worldnameListBox.Items.Clear();
+
             // MinecraftEducationのワールドが入っているディレクトリ
             string dirName = dirNameTextBox.Text;
 
-            // ワールドハッシュ&ワールド名を表示するための配列 あとで辞書にするかも？
-            Dictionary<string, string> worldHashNames = new Dictionary<string, string>();
+            // ここにすべてを入れる
+            List<string[]> worldInfoList = new List<string[]>();
+
+            // ワールドディレクトリのリスト
+            var worldHashList = Directory
+                .GetDirectories (dirName, "*=", SearchOption.AllDirectories) // ディレクトリ内ファイル取得
+                .Where(filepath => Path.GetFileName(filepath) !=  ".DS_Store") // ignore .DS_Store
+                .OrderByDescending(filepath => File.GetLastWriteTime(filepath).Date) // 日付順に降順でソート
+                .ThenBy(filepath => File.GetLastWriteTime(filepath).TimeOfDay) // 同じ日付内で時刻順に昇順でソート
+                .ToList();
+            
+
+            int worldCount = worldHashList.Count();
+            MessageBox.Show($"{worldCount.ToString()}個のワールドが見つかりました");
 
             //MessageBox.Show(dirName);
-            DirectoryInfo worldHashesDI = new DirectoryInfo(dirName);
             try
             {
                 // ワールドのディレクトリ&ワールド名を取得
-                foreach (DirectoryInfo di in worldHashesDI.GetDirectories("*="))
+                for (int i=0; i<worldCount; i++)
                 {
+                    var worldHash = worldHashList[i];
+                    // worldの名前が入ってる実際の絶対パス
+                    string worldNamePath = worldHash + "\\levelname.txt";
+
                     // get world name
-                    string worldNamePath = dirName + "\\" + di.Name + "\\levelname.txt";
-                    MessageBox.Show(worldNamePath);
                     string worldName;
                     if (File.Exists(worldNamePath))
                     {
@@ -45,20 +60,23 @@ namespace mc_worldname_viewer
                     else
                     {
                         worldName = null;
-                        //MessageBox.Show("levelname.txtが見つかりません");
+                        MessageBox.Show($"{worldNamePath}でlevelname.txtが見つかりません");
                     }
 
-                    worldHashNames.Add(di.Name, worldName);
+                    worldInfoList.Add(new string[2] { worldHashList[i], worldName });
                 }
             }
             catch (Exception exp) {
                 Console.WriteLine(exp.Message);
             }
 
-            foreach (KeyValuePair<string, string> whn in worldHashNames)
+            // リストボックスの再描画しないようにする
+            worldnameListBox.BeginUpdate();
+
+            foreach (string[] whn in worldInfoList)
             {
-                string hash = whn.Key;
-                string name = whn.Value;
+                string hash = whn[0].Substring(dirName.Length+1, 12);
+                string name = whn[1];
                 string showhn;
                 if(name == null)
                 {
@@ -70,6 +88,13 @@ namespace mc_worldname_viewer
                 }
                 worldnameListBox.Items.Add(showhn);
             }
+
+            // リストボックス描画
+            worldnameListBox.EndUpdate();
+        }
+
+        private void dirNameTextBox_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

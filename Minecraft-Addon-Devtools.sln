@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mc-worldname-viewer", "mc-worldname-viewer\mc-worldname-viewer.csproj", "{C478A145-6984-4A87-BF72-1CB5B10D2FB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minecraft-Addon-Devtools", "mc-worldname-viewer\Minecraft-Addon-Devtools.csproj", "{C478A145-6984-4A87-BF72-1CB5B10D2FB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

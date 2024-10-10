@@ -32,14 +32,18 @@
             this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             this.dirNameBtn = new System.Windows.Forms.Button();
             this.worldnameListBox = new System.Windows.Forms.ListBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dirNameTextBox
             // 
-            this.dirNameTextBox.Location = new System.Drawing.Point(159, 35);
+            this.dirNameTextBox.Location = new System.Drawing.Point(33, 35);
             this.dirNameTextBox.Name = "dirNameTextBox";
             this.dirNameTextBox.Size = new System.Drawing.Size(275, 19);
             this.dirNameTextBox.TabIndex = 0;
+            this.dirNameTextBox.Text = "C:\\Users\\58kok\\AppData\\Local\\Packages\\Microsoft.MinecraftEducationEdition_8wekyb3" +
+    "d8bbwe\\LocalState\\games\\com.mojang\\minecraftWorlds";
             // 
             // directorySearcher1
             // 
@@ -49,7 +53,7 @@
             // 
             // dirNameBtn
             // 
-            this.dirNameBtn.Location = new System.Drawing.Point(481, 35);
+            this.dirNameBtn.Location = new System.Drawing.Point(314, 33);
             this.dirNameBtn.Name = "dirNameBtn";
             this.dirNameBtn.Size = new System.Drawing.Size(75, 23);
             this.dirNameBtn.TabIndex = 1;
@@ -61,21 +65,31 @@
             // 
             this.worldnameListBox.FormattingEnabled = true;
             this.worldnameListBox.ItemHeight = 12;
-            this.worldnameListBox.Location = new System.Drawing.Point(140, 113);
+            this.worldnameListBox.Location = new System.Drawing.Point(33, 62);
             this.worldnameListBox.Name = "worldnameListBox";
-            this.worldnameListBox.Size = new System.Drawing.Size(306, 196);
+            this.worldnameListBox.Size = new System.Drawing.Size(356, 340);
             this.worldnameListBox.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(429, 256);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(231, 146);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(693, 450);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.worldnameListBox);
             this.Controls.Add(this.dirNameBtn);
             this.Controls.Add(this.dirNameTextBox);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Minecraft Addon Devtools";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -87,6 +101,7 @@
         private System.DirectoryServices.DirectorySearcher directorySearcher1;
         private System.Windows.Forms.Button dirNameBtn;
         private System.Windows.Forms.ListBox worldnameListBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
