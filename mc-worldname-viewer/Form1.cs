@@ -13,6 +13,9 @@ namespace mc_worldname_viewer
 {
     public partial class Form1 : Form
     {
+        // ワールドディレクトリのリスト
+        private List<string> worldHashList = new List<string>();
+
         public Form1()
         {
             InitializeComponent();
@@ -30,7 +33,7 @@ namespace mc_worldname_viewer
             List<string[]> worldInfoList = new List<string[]>();
 
             // ワールドディレクトリのリスト
-            var worldHashList = Directory
+            worldHashList = Directory
                 .GetDirectories (dirName, "*=", SearchOption.AllDirectories) // ディレクトリ内ファイル取得
                 .Where(filepath => Path.GetFileName(filepath) !=  ".DS_Store") // ignore .DS_Store
                 .OrderByDescending(filepath => File.GetLastWriteTime(filepath).Date) // 日付順に降順でソート
@@ -41,7 +44,6 @@ namespace mc_worldname_viewer
             int worldCount = worldHashList.Count();
             MessageBox.Show($"{worldCount.ToString()}個のワールドが見つかりました");
 
-            //MessageBox.Show(dirName);
             try
             {
                 // ワールドのディレクトリ&ワールド名を取得
@@ -93,8 +95,25 @@ namespace mc_worldname_viewer
             worldnameListBox.EndUpdate();
         }
 
-        private void dirNameTextBox_TextChanged(object sender, EventArgs e)
+
+        // ワールド選択
+        private void worldnameListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+                // 選択しているワールドのパス
+                string selectedWorld = worldHashList[worldnameListBox.SelectedIndex];
+
+                if (selectedWorld != null)
+                {
+                    string ThumPath = selectedWorld + "\\world_icon.jpeg";
+                    worldThumPictureBox.ImageLocation = ThumPath; // .Imageプロパティを使うと表示中に削除ができない
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
 
         }
     }

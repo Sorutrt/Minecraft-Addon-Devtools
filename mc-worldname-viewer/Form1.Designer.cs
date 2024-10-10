@@ -32,8 +32,8 @@
             this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             this.dirNameBtn = new System.Windows.Forms.Button();
             this.worldnameListBox = new System.Windows.Forms.ListBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.worldThumPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.worldThumPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // dirNameTextBox
@@ -69,27 +69,29 @@
             this.worldnameListBox.Name = "worldnameListBox";
             this.worldnameListBox.Size = new System.Drawing.Size(356, 340);
             this.worldnameListBox.TabIndex = 2;
+            this.worldnameListBox.SelectedIndexChanged += new System.EventHandler(this.worldnameListBox_SelectedIndexChanged);
             // 
-            // pictureBox1
+            // worldThumPictureBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(429, 256);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(231, 146);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.worldThumPictureBox.Location = new System.Drawing.Point(410, 258);
+            this.worldThumPictureBox.Name = "worldThumPictureBox";
+            this.worldThumPictureBox.Size = new System.Drawing.Size(256, 144);
+            this.worldThumPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.worldThumPictureBox.TabIndex = 3;
+            this.worldThumPictureBox.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 450);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.worldThumPictureBox);
             this.Controls.Add(this.worldnameListBox);
             this.Controls.Add(this.dirNameBtn);
             this.Controls.Add(this.dirNameTextBox);
             this.Name = "Form1";
             this.Text = "Minecraft Addon Devtools";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.worldThumPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,7 +103,7 @@
         private System.DirectoryServices.DirectorySearcher directorySearcher1;
         private System.Windows.Forms.Button dirNameBtn;
         private System.Windows.Forms.ListBox worldnameListBox;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox worldThumPictureBox;
     }
 }
 
