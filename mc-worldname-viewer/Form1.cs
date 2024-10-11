@@ -19,6 +19,12 @@ namespace mc_worldname_viewer
         public Form1()
         {
             InitializeComponent();
+
+            // タブのサイズを変更
+            this.tabControl1.ItemSize = new Size(100, 20);
+
+            // タブの横幅を固定
+            this.tabControl1.SizeMode = TabSizeMode.Fixed;
         }
 
         // Enterボタンをクリック
