@@ -160,15 +160,24 @@ namespace mc_worldname_viewer
         // VSCodeで開く
         private void openVscodeBtn_Click(object sender, EventArgs e)
         {
-            if (selectedWorld != null)
+            try
             {
-                System.Diagnostics.Process.Start(vscodePathTxtBox.Text, @selectedWorld);
-            }
-            else
+                if (vscodePathTxtBox.Text != null && selectedWorld != null)
+                {
+                    System.Diagnostics.Process.Start(vscodePathTxtBox.Text, @selectedWorld);
+                }
+                else if (vscodePathTxtBox.Text == null)
+                {
+                    MessageBox.Show("環境設定でVSCodeの.exeを指定して下さい");
+                }
+                else
+                {
+                    MessageBox.Show("ワールドを選択してください。");
+                }
+            } catch (Exception exp)
             {
-                MessageBox.Show("ワールドを選択してください。");
+                MessageBox.Show(exp.Message);
             }
- 
         }
  
         // ------------------------------------------------
