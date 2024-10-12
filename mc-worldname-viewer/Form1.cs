@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -23,6 +25,8 @@ namespace mc_worldname_viewer
 
             // タブの横幅を固定
             this.tabControl1.SizeMode = TabSizeMode.Fixed;
+
+            loadSettings();
         }
 
         // ------------------------------------------------
@@ -156,7 +160,6 @@ namespace mc_worldname_viewer
             if (selectedWorld != null)
             {
                 MessageBox.Show(selectedWorld);
-                //System.Diagnostics.Process.Start("EXPLORER.EXE", @selectedWorld);
                 System.Diagnostics.Process.Start(vscodePathTxtBox.Text, @selectedWorld);
             }
             else
@@ -189,7 +192,22 @@ namespace mc_worldname_viewer
                     xyzComma = $"x={xyzList[0]},y={xyzList[1]},z={xyzList[2]}";
                 }
                 else if (xyzList.Count == 6 ) {
-                    MessageBox.Show("6変数は未実装です");
+                    // 数値小さい順に並び替え
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (xyzList[i] > xyzList[i + 3])
+                        {
+                            int tmp = xyzList[i];
+                            xyzList[i] = xyzList[i + 3];
+                            xyzList[i + 3] = tmp;
+                        }
+                    }
+
+                    int dx = xyzList[3] - xyzList[0];
+                    int dy = xyzList[4] - xyzList[1];
+                    int dz = xyzList[5] - xyzList[2];
+
+                    xyzComma = $"x={xyzList[0]},y={xyzList[1]},z={xyzList[2]},dx={dx},dy={dy},dz={dz}";
                 }
                 else
                 {
@@ -214,6 +232,16 @@ namespace mc_worldname_viewer
         // ------------------------------------------------
         //                  環境設定
         // ------------------------------------------------
+
+        // 設定ファイルのディレクトリ
+        public string settingsDir = "settings.json";
+
+        public class Settings
+        {
+            public string worldsDir { get; set; }
+            public string vscodeDir { get; set; }
+        }
+
         private void worldOfdBtn_Click(object sender, EventArgs e)
         {
             using (var ofd = new CommonOpenFileDialog() { IsFolderPicker = true })
@@ -235,6 +263,36 @@ namespace mc_worldname_viewer
                 }
             }
  
+        }
+
+        private void saveSettingsBtn_Click(object sender, EventArgs e)
+        {
+            
+            Settings appSettings = new Settings
+            {
+                worldsDir = dirNameTextBox.Text,
+                vscodeDir = vscodePathTxtBox.Text
+            };
+
+            string jsonString = JsonSerializer.Serialize(appSettings);
+
+            File.WriteAllText(settingsDir, jsonString);
+            // MessageBox.Show(jsonString);
+        }
+
+        private void loadSettings()
+        {
+            try
+            {
+                string jsonString = File.ReadAllText(settingsDir);
+                Settings appSettings = JsonSerializer.Deserialize<Settings>(jsonString);
+
+                dirNameTextBox.Text = appSettings.worldsDir;
+                vscodePathTxtBox.Text = appSettings.vscodeDir;
+
+            } catch (Exception exp) { 
+                MessageBox.Show(exp.Message);
+            }
         }
     }
 }

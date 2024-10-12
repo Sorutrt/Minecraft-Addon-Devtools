@@ -33,9 +33,6 @@
             this.worldnameListBox = new System.Windows.Forms.ListBox();
             this.worldThumPictureBox = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.settingsTabPage = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.worldInfoTabPage = new System.Windows.Forms.TabPage();
             this.openVscodeBtn = new System.Windows.Forms.Button();
             this.openExplorer = new System.Windows.Forms.Button();
@@ -43,21 +40,25 @@
             this.xyzConvertButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.xyzTextBox = new System.Windows.Forms.TextBox();
-            this.worldOfdBtn = new System.Windows.Forms.Button();
-            this.vscodePathTxtBox = new System.Windows.Forms.TextBox();
+            this.settingsTabPage = new System.Windows.Forms.TabPage();
             this.vscodeOfdBtn = new System.Windows.Forms.Button();
+            this.vscodePathTxtBox = new System.Windows.Forms.TextBox();
+            this.worldOfdBtn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.saveSettingsBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.worldThumPictureBox)).BeginInit();
             this.tabControl1.SuspendLayout();
-            this.settingsTabPage.SuspendLayout();
             this.worldInfoTabPage.SuspendLayout();
             this.xyzTabPage.SuspendLayout();
+            this.settingsTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // dirNameTextBox
             // 
             this.dirNameTextBox.Location = new System.Drawing.Point(94, 6);
             this.dirNameTextBox.Name = "dirNameTextBox";
-            this.dirNameTextBox.Size = new System.Drawing.Size(514, 19);
+            this.dirNameTextBox.Size = new System.Drawing.Size(473, 19);
             this.dirNameTextBox.TabIndex = 0;
             this.dirNameTextBox.Text = "C:\\Users\\58kok\\AppData\\Local\\Packages\\Microsoft.MinecraftEducationEdition_8wekyb3" +
     "d8bbwe\\LocalState\\games\\com.mojang\\minecraftWorlds";
@@ -100,42 +101,8 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(705, 405);
+            this.tabControl1.Size = new System.Drawing.Size(662, 376);
             this.tabControl1.TabIndex = 4;
-            // 
-            // settingsTabPage
-            // 
-            this.settingsTabPage.Controls.Add(this.vscodeOfdBtn);
-            this.settingsTabPage.Controls.Add(this.vscodePathTxtBox);
-            this.settingsTabPage.Controls.Add(this.worldOfdBtn);
-            this.settingsTabPage.Controls.Add(this.label3);
-            this.settingsTabPage.Controls.Add(this.label1);
-            this.settingsTabPage.Controls.Add(this.dirNameTextBox);
-            this.settingsTabPage.Location = new System.Drawing.Point(4, 22);
-            this.settingsTabPage.Name = "settingsTabPage";
-            this.settingsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.settingsTabPage.Size = new System.Drawing.Size(697, 379);
-            this.settingsTabPage.TabIndex = 1;
-            this.settingsTabPage.Text = "環境設定";
-            this.settingsTabPage.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 38);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 12);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "VSCodeの場所";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "ワールドの場所";
             // 
             // worldInfoTabPage
             // 
@@ -148,7 +115,7 @@
             this.worldInfoTabPage.Location = new System.Drawing.Point(4, 22);
             this.worldInfoTabPage.Name = "worldInfoTabPage";
             this.worldInfoTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.worldInfoTabPage.Size = new System.Drawing.Size(697, 379);
+            this.worldInfoTabPage.Size = new System.Drawing.Size(654, 350);
             this.worldInfoTabPage.TabIndex = 0;
             this.worldInfoTabPage.Text = "WorldInfo";
             this.worldInfoTabPage.UseVisualStyleBackColor = true;
@@ -180,14 +147,14 @@
             this.xyzTabPage.Controls.Add(this.xyzTextBox);
             this.xyzTabPage.Location = new System.Drawing.Point(4, 22);
             this.xyzTabPage.Name = "xyzTabPage";
-            this.xyzTabPage.Size = new System.Drawing.Size(697, 379);
+            this.xyzTabPage.Size = new System.Drawing.Size(654, 350);
             this.xyzTabPage.TabIndex = 2;
             this.xyzTabPage.Text = "xyz";
             this.xyzTabPage.UseVisualStyleBackColor = true;
             // 
             // xyzConvertButton
             // 
-            this.xyzConvertButton.Location = new System.Drawing.Point(23, 74);
+            this.xyzConvertButton.Location = new System.Drawing.Point(249, 47);
             this.xyzConvertButton.Name = "xyzConvertButton";
             this.xyzConvertButton.Size = new System.Drawing.Size(128, 23);
             this.xyzConvertButton.TabIndex = 2;
@@ -208,29 +175,29 @@
             // 
             this.xyzTextBox.Location = new System.Drawing.Point(98, 22);
             this.xyzTextBox.Name = "xyzTextBox";
-            this.xyzTextBox.Size = new System.Drawing.Size(100, 19);
+            this.xyzTextBox.Size = new System.Drawing.Size(279, 19);
             this.xyzTextBox.TabIndex = 0;
             // 
-            // worldOfdBtn
+            // settingsTabPage
             // 
-            this.worldOfdBtn.Location = new System.Drawing.Point(614, 4);
-            this.worldOfdBtn.Name = "worldOfdBtn";
-            this.worldOfdBtn.Size = new System.Drawing.Size(75, 23);
-            this.worldOfdBtn.TabIndex = 4;
-            this.worldOfdBtn.Text = "参照..";
-            this.worldOfdBtn.UseVisualStyleBackColor = true;
-            this.worldOfdBtn.Click += new System.EventHandler(this.worldOfdBtn_Click);
-            // 
-            // vscodePathTxtBox
-            // 
-            this.vscodePathTxtBox.Location = new System.Drawing.Point(94, 35);
-            this.vscodePathTxtBox.Name = "vscodePathTxtBox";
-            this.vscodePathTxtBox.Size = new System.Drawing.Size(514, 19);
-            this.vscodePathTxtBox.TabIndex = 5;
+            this.settingsTabPage.Controls.Add(this.saveSettingsBtn);
+            this.settingsTabPage.Controls.Add(this.vscodeOfdBtn);
+            this.settingsTabPage.Controls.Add(this.vscodePathTxtBox);
+            this.settingsTabPage.Controls.Add(this.worldOfdBtn);
+            this.settingsTabPage.Controls.Add(this.label3);
+            this.settingsTabPage.Controls.Add(this.label1);
+            this.settingsTabPage.Controls.Add(this.dirNameTextBox);
+            this.settingsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.settingsTabPage.Name = "settingsTabPage";
+            this.settingsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.settingsTabPage.Size = new System.Drawing.Size(654, 350);
+            this.settingsTabPage.TabIndex = 1;
+            this.settingsTabPage.Text = "環境設定";
+            this.settingsTabPage.UseVisualStyleBackColor = true;
             // 
             // vscodeOfdBtn
             // 
-            this.vscodeOfdBtn.Location = new System.Drawing.Point(614, 33);
+            this.vscodeOfdBtn.Location = new System.Drawing.Point(571, 33);
             this.vscodeOfdBtn.Name = "vscodeOfdBtn";
             this.vscodeOfdBtn.Size = new System.Drawing.Size(75, 23);
             this.vscodeOfdBtn.TabIndex = 6;
@@ -238,21 +205,66 @@
             this.vscodeOfdBtn.UseVisualStyleBackColor = true;
             this.vscodeOfdBtn.Click += new System.EventHandler(this.vscodeOfdBtn_Click);
             // 
+            // vscodePathTxtBox
+            // 
+            this.vscodePathTxtBox.Location = new System.Drawing.Point(94, 35);
+            this.vscodePathTxtBox.Name = "vscodePathTxtBox";
+            this.vscodePathTxtBox.Size = new System.Drawing.Size(473, 19);
+            this.vscodePathTxtBox.TabIndex = 5;
+            // 
+            // worldOfdBtn
+            // 
+            this.worldOfdBtn.Location = new System.Drawing.Point(571, 4);
+            this.worldOfdBtn.Name = "worldOfdBtn";
+            this.worldOfdBtn.Size = new System.Drawing.Size(75, 23);
+            this.worldOfdBtn.TabIndex = 4;
+            this.worldOfdBtn.Text = "参照..";
+            this.worldOfdBtn.UseVisualStyleBackColor = true;
+            this.worldOfdBtn.Click += new System.EventHandler(this.worldOfdBtn_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 12);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "VSCodeの場所";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "ワールドの場所";
+            // 
+            // saveSettingsBtn
+            // 
+            this.saveSettingsBtn.Location = new System.Drawing.Point(571, 319);
+            this.saveSettingsBtn.Name = "saveSettingsBtn";
+            this.saveSettingsBtn.Size = new System.Drawing.Size(75, 23);
+            this.saveSettingsBtn.TabIndex = 7;
+            this.saveSettingsBtn.Text = "Save";
+            this.saveSettingsBtn.UseVisualStyleBackColor = true;
+            this.saveSettingsBtn.Click += new System.EventHandler(this.saveSettingsBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(705, 405);
+            this.ClientSize = new System.Drawing.Size(662, 376);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Minecraft Addon Devtools";
             ((System.ComponentModel.ISupportInitialize)(this.worldThumPictureBox)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            this.settingsTabPage.ResumeLayout(false);
-            this.settingsTabPage.PerformLayout();
             this.worldInfoTabPage.ResumeLayout(false);
             this.xyzTabPage.ResumeLayout(false);
             this.xyzTabPage.PerformLayout();
+            this.settingsTabPage.ResumeLayout(false);
+            this.settingsTabPage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -277,6 +289,7 @@
         private System.Windows.Forms.Button worldOfdBtn;
         private System.Windows.Forms.TextBox vscodePathTxtBox;
         private System.Windows.Forms.Button vscodeOfdBtn;
+        private System.Windows.Forms.Button saveSettingsBtn;
     }
 }
 
