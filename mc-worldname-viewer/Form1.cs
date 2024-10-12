@@ -16,6 +16,9 @@ namespace mc_worldname_viewer
 {
     public partial class Form1 : Form
     {
+        // 設定ファイルなどを入れとくやつ
+        public static string madFilesDir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Minecraft-Addon-Devtools";
+
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +29,7 @@ namespace mc_worldname_viewer
             // タブの横幅を固定
             this.tabControl1.SizeMode = TabSizeMode.Fixed;
 
+            // MessageBox.Show($"madfiles: {madFilesDir} \n settings: {settingsDir}");
             loadSettings();
         }
 
@@ -94,7 +98,7 @@ namespace mc_worldname_viewer
                 Console.WriteLine(exp.Message);
             }
 
-            // リストボックスの再描画しないようにする
+            // 軽量化のため、リストボックスの再描画しないようにする
             worldnameListBox.BeginUpdate();
 
             foreach (string[] whn in worldInfoList)
@@ -144,7 +148,6 @@ namespace mc_worldname_viewer
         {
             if (selectedWorld != null)
             {
-                // MessageBox.Show(selectedWorld);
                 //System.Diagnostics.Process.Start("EXPLORER.EXE", @selectedWorld);
                 System.Diagnostics.Process.Start(@selectedWorld);
             }
@@ -159,7 +162,6 @@ namespace mc_worldname_viewer
         {
             if (selectedWorld != null)
             {
-                MessageBox.Show(selectedWorld);
                 System.Diagnostics.Process.Start(vscodePathTxtBox.Text, @selectedWorld);
             }
             else
@@ -183,8 +185,6 @@ namespace mc_worldname_viewer
                 {
                     xyzList.Add(int.Parse(xyzString[i]));
                 }
-
-                // MessageBox.Show($"x: {xyzList[0]}, y: {xyzList[1]}, z: {xyzList[2]}");
 
                 // x=111,y=222,z=333 の形にする
                 string xyzComma = "";
@@ -234,7 +234,7 @@ namespace mc_worldname_viewer
         // ------------------------------------------------
 
         // 設定ファイルのディレクトリ
-        public string settingsDir = "settings.json";
+        public string settingsDir = madFilesDir + "\\settings.json";
 
         public class Settings
         {
@@ -280,11 +280,34 @@ namespace mc_worldname_viewer
             // MessageBox.Show(jsonString);
         }
 
-        private void loadSettings()
+        private async void loadSettings()
         {
+            // settings.jsonの存在チェック
+            if(!File.Exists(settingsDir))
+            {
+                MessageBox.Show("設定ファイルが存在しないので作成します");
+                if(!Directory.Exists(madFilesDir))
+                {
+                    MessageBox.Show("madフォルダが存在しないので作成します");
+                    Directory.CreateDirectory(madFilesDir);
+                }
+
+                // valueが空のjson
+                Settings appSettings = new Settings
+                {
+                    worldsDir = "",
+                    vscodeDir = ""
+                };
+                string jsonString = JsonSerializer.Serialize(appSettings);
+
+                // 非同期でファイル作成＆書き込み
+                await WriteTextAsync(settingsDir, jsonString);
+            }
+
+            // ここからが本当のロード
             try
             {
-                string jsonString = File.ReadAllText(settingsDir);
+                string jsonString = await ReadTextAsync(settingsDir);
                 Settings appSettings = JsonSerializer.Deserialize<Settings>(jsonString);
 
                 dirNameTextBox.Text = appSettings.worldsDir;
@@ -292,6 +315,22 @@ namespace mc_worldname_viewer
 
             } catch (Exception exp) { 
                 MessageBox.Show(exp.Message);
+            }
+        }
+
+        static async Task WriteTextAsync(string path, string content)
+        {
+            using (StreamWriter writer = new StreamWriter(path, append: false))
+            {
+                await writer.WriteLineAsync(content);
+            }
+        }
+
+        static async Task<string> ReadTextAsync(string path)
+        {
+            using (StreamReader reader = new StreamReader(path))
+            {
+                return await reader.ReadToEndAsync();
             }
         }
     }
