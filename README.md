@@ -21,11 +21,11 @@ Minecraft Bedrock Addon/BehaviorPack 開発に便利なツールです。
 - ワールドの場所: Minecraftのワールドが入っているフォルダ
   - Bedrock Edition のパスは以下です（パスが異なる場合があります）
     ```
-    %localappdata%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds
+    C:\Users\自分のユーザー名\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds
     ```
   - Education のパスは以下です（パスが異なる場合があります）
     ```
-    %localappdata%\Packages\Microsoft.MinecraftEducationEdition_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds
+    C:\Users\自分のユーザー名\AppData\Local\Packages\Microsoft.MinecraftEducationEdition_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds
     ```
 - VSCodeの場所: Visual Studio Code の`code.exe`の場所
 
