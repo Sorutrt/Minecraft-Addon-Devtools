@@ -186,13 +186,15 @@ namespace mc_worldname_viewer
         {
             try
             {
-                // 値を取得してintに変換
-                string[] xyzString = SplitFunc(xyzTextBox.Text);
-                List<int> xyzList = new List<int>();
-                for (int i = 0; i < xyzString.Length; i++)
+                List<string> xyzTextList = new List<string>(SplitFunc(xyzTextBox.Text));
+                // /fill や /setblock （/で始まる文字列） が入ってたら消して前へ詰める
+                if (xyzTextList[0][0] == '/')
                 {
-                    xyzList.Add(int.Parse(xyzString[i]));
+                    xyzTextList.RemoveAt(0);
                 }
+
+                // int変換
+                List<int> xyzList = xyzTextList.Select(int.Parse).ToList();
 
                 // x=111,y=222,z=333 の形にする
                 string xyzComma = "";
