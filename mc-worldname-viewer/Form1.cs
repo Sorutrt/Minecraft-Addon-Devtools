@@ -88,7 +88,6 @@ namespace mc_worldname_viewer
                     else
                     {
                         worldName = null;
-                        MessageBox.Show($"{worldNamePath}でlevelname.txtが見つかりません");
                     }
 
                     worldInfoList.Add(new string[2] { worldHashList[i], worldName });
