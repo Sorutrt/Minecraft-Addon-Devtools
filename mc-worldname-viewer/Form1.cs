@@ -31,6 +31,8 @@ namespace mc_worldname_viewer
 
             // MessageBox.Show($"madfiles: {madFilesDir} \n settings: {settingsDir}");
             loadSettings();
+
+            dirNameBtn_Click(dirNameBtn, new EventArgs());
         }
 
         // ------------------------------------------------
