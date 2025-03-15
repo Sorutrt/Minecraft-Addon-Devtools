@@ -103,16 +103,10 @@ namespace mc_worldname_viewer
             {
                 string hash = whn[0].Substring(dirName.Length+1, 12);
                 string name = whn[1];
-                string showhn;
-                if(name == null)
+                if(name != null)
                 {
-                    showhn = hash + " : World name has not found";
+                    worldnameListBox.Items.Add(hash + " : " + name);
                 }
-                else
-                {
-                    showhn = hash + " : " + name;
-                }
-                worldnameListBox.Items.Add(showhn);
             }
 
             // リストボックス描画
