@@ -68,7 +68,6 @@ namespace mc_worldname_viewer
             }
 
             int worldCount = worldHashList.Count();
-            MessageBox.Show($"{worldCount.ToString()}個のワールドが見つかりました");
 
             try
             {
